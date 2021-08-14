@@ -1,2 +1,2 @@
 # a590
-resources
+Resources including reading materials, scripts and updates
