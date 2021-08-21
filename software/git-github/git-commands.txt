@@ -14,9 +14,12 @@ git commit -m 'message' (commit changes staged)
 git push -u origin main (push local changes to remote; update remote)
 git push -u origin main --force (delete previous commits;push current ones)
 
+# Logs
 git log (print history) (type q or z to quit)
+git log --pretty=oneline -- <file>
 
-# add a file to a remote branch
+
+# add a file to a remote branch 'main'
 git add .
 git commit -m "add file"
 git push origin main
@@ -32,3 +35,12 @@ ls -all
 git remote -v (verify remote)
 git pull
 git pull origin main(branchname)
+
+
+# create branch
+git branch bname
+
+# switch branch
+git branch -a (list all branches)
+git checkout main (checkout the branch you want to use)
+
