@@ -1,4 +1,4 @@
-"""Must put the script in the current directory
+"""Must put the script in the current working directory
 which is open in VS Code
 """
 import sqlite3, os
