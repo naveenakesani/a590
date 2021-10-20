@@ -14,3 +14,11 @@ SELECT  r1.country, 2020_rank, 2021_rank,
 FROM    r1 JOIN r2 ON r1.country = r2.country
 WHERE   2021_rank < 2020_rank
 ;  
+
+select   a.faa, a.name,
+         100*count(f.id)/(select count(*) from flights where duration>180) AS share_flight_gt180
+from     airports a LEFT JOIN flights f 
+          ON f.duration > 180 and a.faa = f.origin
+group by a.faa
+order by share_flight_gt180 desc
+;
