@@ -25,8 +25,8 @@ db = config.sqlalchemy_engine("flight2")
 
 # transaction
 if db is not None:
-    #insert
-    df.to_sql('passenger', con=db, if_exists='replace', index=False) #fail,replace,append
+    #insert, three modes:fail,replace,append. index to False, skip row index
+    df.to_sql('passenger', con=db, if_exists='replace', index=False) 
     #airlines_df.to_csv(f, index=False, line_terminator='\n')
     test = pd.read_sql("select * from passenger", db)
     print(test[0:5])
