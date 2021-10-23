@@ -1,5 +1,5 @@
 import sys, os
-# import function from custom module
+# import custom module from a directory 'function'
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
