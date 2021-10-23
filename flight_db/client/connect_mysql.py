@@ -1,4 +1,10 @@
-import config, os
+import sys, os
+# import function from custom module
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+from function import config
+
 import pandas as pd
 # pip install mysql-connector-python
 # pip install pymysql
@@ -6,26 +12,25 @@ import pandas as pd
 import mysql.connector as mc
 from mysql.connector import errorcode
 
-try:
-    db = mc.connect(
-        host = config.mysql_host,
-        port = config.mysql_port,
-        user = config.mysql_user,
-        password = config.mysql_pwd,
-        database="flight2"
-    )
-except mc.Error as e:
-    print(f"something went wrong:{e}")    
+# make db connection
+db = config.connect_mysql("flight")
+
+# transaction
+if db is not None:
+    #read
+    airlines_df = pd.read_sql("select * from airlines", db)    
+    airlines_df.info()
+    #location: in a subfolder report
+    dir = "report" 
+    #create subfolder if not exists
+    if not os.path.exists(dir): 
+        os.mkdir(dir) 
+    #write
+    file_name = "airlines_list" #filename
+    fpath = os.path.join(dir, f"{file_name}.csv")
+    with open(fpath, "w", encoding="utf-8" ) as f:
+        airlines_df.to_csv(f, index=False, line_terminator='\n')
+    #close connection
+    db.close()  
 else:
-    print("Success")
-
-airlines_df = pd.read_sql("select * from airline", db)    
-airlines_df.info()
-
-dir = "client" #subfolder
-file_name = "list_airlines" #filename
-fpath = os.path.join(dir, f"{file_name}.csv")
-with open(fpath, "w", encoding="utf-8" ) as f:
-    airlines_df.to_csv(f, index=False, line_terminator='\n')
-
-db.close()    
+    print(f"No connection available.") 
