@@ -1,3 +1,6 @@
+"""
+place config.py in the working directory
+"""
 # mysql
 mysql_host = "127.0.0.1"
 mysql_user = "root"
