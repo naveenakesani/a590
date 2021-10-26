@@ -12,7 +12,7 @@ import pandas as pd
 from sqlalchemy import create_engine, types
 
 # make a connection to mysql database `flight2`
-engine = config.sqlalchemy_mysql_engine("flight2")
+engine = config.sqlalchemy_mysql("flight2")
 
 # query
 if engine is not None:
