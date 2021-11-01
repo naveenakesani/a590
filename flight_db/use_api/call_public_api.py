@@ -9,22 +9,22 @@ import requests, os, json
 headers = {'Content-type':"application/json"}   #,'apikey': key
 session = requests.Session()
 session.headers.update(headers)
+
 """2.make key-value pairs for post parameter(s)
 """
 data = {
     "text": "the complexity of the scientific field of machine learning can be overwhelming"
 }
+
 """3.send a POST request
 """
 response = session.post(f'http://text-processing.com/api/sentiment/', data)
+
 """4.print response
 """
 print(f"response: {response}") #HTTP 200 OK success status
-
 print(f"Label: {response.json()['label']}")
-
 print(f"Probabilities: {response.json()['probability']}")
-
 print(f"Probability of positive: {response.json()['probability']['pos']}")
 
 """5. json dump
