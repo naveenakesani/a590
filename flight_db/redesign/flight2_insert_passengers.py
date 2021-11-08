@@ -1,3 +1,11 @@
+"""import passenger data 
+with Pandas instead of SQL
+Data source: 
+    passengers.csv in subfolder `redesign`
+Requirements:
+    user-defined module `config.py` in subfolder `function`
+"""
+
 import sys, os
 # import config from subdirectory `function`
 currentdir = os.path.dirname(os.path.realpath(__file__))
