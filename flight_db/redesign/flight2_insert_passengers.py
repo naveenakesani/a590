@@ -17,9 +17,6 @@ import pandas as pd
 # pip install mysql-connector-python
 # pip install pymysql
 # pip install sqlalchemy
-#import mysql.connector as mc
-#from mysql.connector import errorcode
-from sqlalchemy import create_engine 
 
 input_file = os.path.join("redesign", "passengers.csv")
 df = pd.read_csv(input_file)
@@ -29,7 +26,7 @@ df.insert(0, "passenger_id", range(1, n_row+1))
 #print(df[0:2])
 
 # make sqlalchemy.engine
-db = config.sqlalchemy_engine("flight2")
+db = config.sqlalchemy_mysql("flight2")
 
 # transaction
 if db is not None:
@@ -43,5 +40,3 @@ if db is not None:
 else:
     print(f"No connection available.")
 
-# close connection
-db.close()    
