@@ -17,8 +17,8 @@ import pandas as pd
 # pip install mysql-connector-python
 # pip install pymysql
 # pip install sqlalchemy
-import mysql.connector as mc
-from mysql.connector import errorcode
+#import mysql.connector as mc
+#from mysql.connector import errorcode
 from sqlalchemy import create_engine 
 
 input_file = os.path.join("redesign", "passengers.csv")
