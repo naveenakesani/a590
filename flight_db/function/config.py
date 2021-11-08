@@ -9,6 +9,8 @@ mysql_pwd = "apple"
 mysql_port = 3306
 #mysql_port_mac = 3306
 
+import mysql.connector as mc
+from mysql.connector import errorcode
 from sqlalchemy import create_engine, types
 import pymysql, sqlite3
 
