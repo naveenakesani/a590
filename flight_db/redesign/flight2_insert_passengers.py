@@ -36,7 +36,7 @@ if db is not None:
     test = pd.read_sql("select * from passenger", db)
     print(test[0:5])
     #close connection
-    db.close()  
+    #db.close()  
 else:
     print(f"No connection available.")
 
